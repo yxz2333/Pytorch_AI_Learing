@@ -17,17 +17,19 @@ data_loader = DataLoader(dataset, batch_size=10, shuffle=True)  # 创建一个�
 # 定义线性回归模型类
 class LinearRegressionModel(nn.Module):  # 继承nn.Module，自定义模型
     def __init__(self):
-        super(LinearRegressionModel, self).__init__()
+        super(LinearRegressionModel, self).__init__()  # 初始化父类nn.Module
         self.linear = nn.Linear(1, 1)  # 定义一个线性层，输入和输出特征都是1维
 
-    def forward(self, x):
-        return self.linear(x)  # 定义前向传播函数
+    def forward(self, x):  # 定义前向传播函数
+        return self.linear(x)
 
 
 model = LinearRegressionModel()  # 实例化模型
 
+print(model)
+
 # 定义损失函数和优化器
-criterion = nn.MSELoss()  # 使用均方误差作为损失函数
+criterion = nn.MSELoss()  # 使用均方误差MSE作为损失函数
 optimizer = optim.SGD(model.parameters(), lr=0.01)  # 使用随机梯度下降优化器，学习率设置为0.01
 
 # 训练模型
